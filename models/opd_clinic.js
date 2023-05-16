@@ -1,0 +1,65 @@
+const mongoose = require('mongoose')
+
+const opdClinicSchema = new mongoose.Schema({
+    AFTER_DR_DATE: { type: Date },
+    AGE_DAY: { type: String },
+    AGE_MONTH: { type: String },
+    AGE_YEAR: { type: String},
+    BMI: { type: String },
+    BODY_TEMPERATURE: { type: String},
+    BP_DIASTOLIC: { type: String },
+    BP_SYSTOLIC: { type: String },
+    BP_TYPE: { type: String },
+    BPD_ARM_LT: { type: String },
+    BPD_ARM_RT: { type: String },
+    BPD_LEG_LT: { type: String },
+    BPD_LEG_RT: { type: String },
+    BPS_ARM_LT: { type: String },
+    BPS_ARM_RT: { type: String },
+    BPS_LEG_LT: { type: String },
+    BPS_LEG_RT: { type: String },
+    BSLEVEL: { type: String },
+    BSTEST: { type: String },
+    CHECKIN_DATE: { type: String },
+    CHECKOUT_DATE: { type: String },
+    CHIEF_COMPLAINT: { type: String },
+    CLINIC_DATE: { type: Date },
+    DENTYPE: { type: String },
+    FINISH_SCREEN_DATE: { type: String },
+    FINISH_DATE: { type: Date },
+    FINISH_FLAG: { type: String },
+    HEIGHT: { type: String },
+    HN: { type: String },
+    HTFAMILY: { type: String },
+    MEET_DR_DATE: { type: Date },
+    NEW_OD_OPD_FLAG: { type: String },
+    PULSE: { type: String },
+    QUEUE_BRANCH: { type: String },
+    QUEUE_DATE: { type: Date },
+    RESPTRATORY: { type: String },
+    RUN_HN: { type: String },
+    SCREENING_DATE: { type: Date },
+    SUGGESTION: { type: String },
+    SMWT: { type: String },
+    VACCINE: { type: String },
+    WEIGHT: { type: String },
+    DOCTOR: { type: mongoose.Schema.Types.ObjectId, ref: 'user', requied: true },
+    // QUEUE_ID: { type: mongoose.Schema.Types.ObjectId, ref: 'main_personal', requied: true },
+    USER_CREATED: { type: mongoose.Schema.Types.ObjectId, ref: 'user', requied: true },
+    USER_MODIFIED: { type: mongoose.Schema.Types.ObjectId, ref: 'user', requied: true },
+    WORK_ID: { type: mongoose.Schema.Types.ObjectId, ref: 'work_place', requied: true },
+    PATIENT_ID: { type: mongoose.Schema.Types.ObjectId, ref: 'patient', requied: true },
+    DATE_CREATED: {
+        type: Date,
+        immutable: true,
+        default: () => Date.now(),
+    },
+    DATE_MODIFIED: {
+        type: Date,
+        default: () => Date.now()
+    }
+})
+
+module.exports = mongoose.model('opd_clinic', opdClinicSchema)
+
+
