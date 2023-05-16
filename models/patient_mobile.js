@@ -14,7 +14,7 @@ const patientMobileSchema = new mongoose.Schema({
     ipAddress : {type : String,required : true},
     pdpaFlag : {type : String,required : true},
     status : {type : String,required : true},
-    token_device : {type : String,required : true},
+    token_device : {type : String},
     logoutFlag : {type : String},
     passwordUpdated: {
         type: Date,
