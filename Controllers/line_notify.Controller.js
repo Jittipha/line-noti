@@ -22,8 +22,8 @@ exports.redirect = async (req, res) => {
       code: code,
       redirect_uri:
         "https://testnotify-production.up.railway.app/api/line/noti/redirect",
-      client_id: process.env.CLIENT_ID_LINE_SERVICE,
-      client_secret: process.env.CLIENT_SECRET_LINE_SERVICE,
+      client_id: 'ECqn7tb6U3tR68F6dSCfeE',
+      client_secret: 'QYYcWgG60MwsnlBtOVUrcf2hsXDScQsFMpuUzsJEtu1',
     };
 
     const requestOption = {
