@@ -1,5 +1,5 @@
 const personal = require("../models/patient_mobile");
-//const axios = require("axios");
+const axios = require("axios");
 const qs = require("qs");
 
 exports.redirect = async (req, res) => {
