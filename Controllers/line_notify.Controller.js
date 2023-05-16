@@ -21,7 +21,7 @@ exports.redirect = async (req, res) => {
       grant_type: "authorization_code",
       code: code,
       redirect_uri:
-        "https://testnotify-production.up.railway.app/api/line/noti/redirect",
+        "https://line-noti-production.up.railway.app/api/line/noti/redirect",
       client_id: 'ECqn7tb6U3tR68F6dSCfeE',
       client_secret: 'QYYcWgG60MwsnlBtOVUrcf2hsXDScQsFMpuUzsJEtu1',
     };
