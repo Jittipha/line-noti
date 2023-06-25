@@ -458,3 +458,13 @@
 ::ffff:127.0.0.1 - [2023-05-12T11:04:39.059Z] PATCH /api/appointment/updatedata HTTP/1.1 - - - - ms
 ::ffff:127.0.0.1 - [2023-05-12T11:04:39.060Z] PATCH /api/appointment/updatedata HTTP/1.1 - - - - ms
 ::ffff:127.0.0.1 - [2023-05-15T07:32:34.771Z] POST /api/appointment/adddata HTTP/1.1 - - - - ms
+::ffff:127.0.0.1 - [2023-05-19T05:19:48.998Z] GET /api/notifi/get/count/status/read/640198bc454470826994b056 HTTP/1.1 - - - - ms
+::ffff:127.0.0.1 - [2023-05-22T08:26:18.266Z] DELETE /api/appointment/cancel/appoint HTTP/1.1 - - - - ms
+::ffff:127.0.0.1 - [2023-05-22T08:26:18.305Z] DELETE /api/appointment/cancel/appoint HTTP/1.1 - - - - ms
+::ffff:127.0.0.1 - [2023-05-22T08:26:18.306Z] DELETE /api/appointment/cancel/appoint HTTP/1.1 - - - - ms
+::ffff:127.0.0.1 - [2023-05-22T08:26:18.307Z] DELETE /api/appointment/cancel/appoint HTTP/1.1 - - - - ms
+::ffff:127.0.0.1 - [2023-05-22T08:26:18.313Z] DELETE /api/appointment/cancel/appoint HTTP/1.1 - - - - ms
+::ffff:127.0.0.1 - [2023-05-22T08:26:18.318Z] DELETE /api/appointment/cancel/appoint HTTP/1.1 - - - - ms
+::ffff:127.0.0.1 - [2023-05-22T08:26:18.326Z] DELETE /api/appointment/cancel/appoint HTTP/1.1 - - - - ms
+::ffff:127.0.0.1 - [2023-05-22T08:26:18.326Z] DELETE /api/appointment/cancel/appoint HTTP/1.1 - - - - ms
+::ffff:127.0.0.1 - [2023-05-22T08:26:18.328Z] DELETE /api/appointment/cancel/appoint HTTP/1.1 - - - - ms

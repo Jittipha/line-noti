@@ -626,10 +626,11 @@ exports.Cancel_Appoint = async (req, res) => {
     if (!_id) {
       return res.send({ error: true, message: "กรุณากรอกข้อมูลให้ครบ" });
     }
-    let appointment_data = await appointment.find({ _id });
+    const appointment_data = await appointment.findOne({ _id });
     appointment_data.APPOINT_STATUS = "C";
     appointment_data.CANCEL_REASON = CANCEL_REASON;
-    appointment_data.DATE_MODIFIED = Date.now();
+    appointment_data.DATE_MODIFIED = new Date();
+    await appointment_data.save();
     const data_notifacation = await notification.find({ APPOINT_ID: _id });
     for (let x = 0; x < data_notifacation.length; x++) {
       pushNoti.delete_notification(data_notifacation[x].noti_id);

@@ -12,7 +12,7 @@ exports.redirect = async (req, res) => {
       return res.status(400).send({ message: error_description });
     }
     if (!state || !code) {
-      return res.status(400).send({ message: "ข้อมุลไม่ครบ" });
+      return res.status(400).send({ message: "ข้อมูลไม่ครบ" });
     }
     console.log("State :" + state + "  Code :" + code);
 
@@ -21,9 +21,9 @@ exports.redirect = async (req, res) => {
       grant_type: "authorization_code",
       code: code,
       redirect_uri:
-        "https://testnotify-production.up.railway.app/api/line/noti/redirect",
-      client_id: process.env.CLIENT_ID_LINE_SERVICE,
-      client_secret: process.env.CLIENT_SECRET_LINE_SERVICE,
+        "https://line-noti-production.up.railway.app/api/line/noti/redirect",
+      client_id: "ECqn7tb6U3tR68F6dSCfeE",
+      client_secret: "QYYcWgG60MwsnlBtOVUrcf2hsXDScQsFMpuUzsJEtu1",
     };
 
     const requestOption = {
@@ -41,7 +41,7 @@ exports.redirect = async (req, res) => {
         data_personal.connectLine = "Y";
         data_personal.accessTokenLine = token;
         await data_personal.save();
-        return res.send({ error: false, message: "line connected!" });
+        return res.send({ error: false, message: "Connected!" });
       } else {
         console.log("failed");
         return res.status(400);
@@ -52,39 +52,44 @@ exports.redirect = async (req, res) => {
   }
 };
 
-exports.adddata = async (req, res) => {
-  let { TEXT } = req.body;
-  console.log("Token :" + token + "  Message : " + TEXT);
+exports.sendMessageLine = async (text, PATIENT_ID) => {
   try {
-    if (!TEXT) {
-      console.log("empty");
-      return res.status(400).send({ message: "ข้อมุลไม่ครบ" });
+    const token_patient = await personal
+      .findOne({ PATIENT_ID })
+      .select("accessTokenLine");
+    if (
+      token_patient.accessTokenLine == "" ||
+      token_patient.accessTokenLine == null ||
+      token_patient.accessTokenLine == undefined
+    ) {
+      return "success";
+    } else {
+      const url = "https://notify-api.line.me/api/notify";
+      const jsonData = {
+        message: text,
+      };
+      const requestOption = {
+        method: "POST",
+        headers: {
+          "content-type": "application/x-www-form-urlencoded",
+          Authorization: `Bearer ` + token_patient.accessTokenLine,
+        },
+        data: qs.stringify(jsonData),
+        url,
+      };
+      axios(requestOption)
+        .then((axiosRes) => {
+          if (axiosRes.status === 200) {
+            console.log("Notification Success");
+            return "success";
+          }
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+          return "failed";
+        });
     }
-    const url = "https://notify-api.line.me/api/notify";
-    const jsonData = {
-      message: TEXT,
-    };
-    const requestOption = {
-      method: "POST",
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        Authorization: `Bearer ` + token,
-      },
-      data: qs.stringify(jsonData),
-      url,
-    };
-    axios(requestOption)
-      .then((axiosRes) => {
-        if (axiosRes.status === 200) {
-          console.log("Notification Success");
-          res.status(201).end();
-        }
-      })
-      .catch((error) => {
-        res.status(201).end();
-        console.log(error.response.data);
-      });
   } catch (err) {
-    return res.status(400).send(err);
+    throw err;
   }
 };
