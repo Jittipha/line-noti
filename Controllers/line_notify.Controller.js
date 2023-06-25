@@ -33,6 +33,7 @@ exports.redirect = async (req, res) => {
       url,
     };
     axios(requestOption).then(async (lineRes) => {
+      console.log("working");
       if (lineRes.status === 200) {
         console.log("Auth Success");
         token = lineRes.data.access_token;
